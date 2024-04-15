@@ -369,7 +369,7 @@ var uPlot = (function () {
 	// nullModes
 	var NULL_REMOVE = 0;  // nulls are converted to undefined (e.g. for spanGaps: true)
 	var NULL_RETAIN = 1;  // nulls are retained, with alignment artifacts set to undefined (default)
-	var NULL_EXPAND = 2;  // nulls are expanded to include any adjacent alignment artifacts
+	var NULL_EXPAND = 2;  // nulls are expanded to includes any adjacent alignment artifacts
 
 	// sets undefined values to nulls when adjacent to existing nulls (minesweeper)
 	function nullExpand(yVals, nullIdxs, alignedLen) {

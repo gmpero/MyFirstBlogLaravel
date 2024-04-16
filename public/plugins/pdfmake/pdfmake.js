@@ -48271,7 +48271,7 @@ var isCombiningT = function isCombiningT(code) {
   return T_BASE + 1 && 1 <= code && code <= T_END;
 };
 
-// Character categories
+// Character category
 var X = 0; // Other character
 var L = 1; // Leading consonant
 var V = 2; // Medial vowel
@@ -48280,7 +48280,7 @@ var LV = 4; // Composed <LV> syllable
 var LVT = 5; // Composed <LVT> syllable
 var M = 6; // Tone mark
 
-// This function classifies a character using the above categories.
+// This function classifies a character using the above category.
 function getType(code) {
   if (isL(code)) {
     return L;

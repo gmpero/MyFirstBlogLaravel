@@ -26,10 +26,12 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('admin.post.store')}}" method="POST" enctype="multipart/form-data" class="w-75">
+                        <form action="{{route('admin.post.store')}}" method="POST" enctype="multipart/form-data"
+                              class="w-75">
                             @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" name="title" placeholder="Название поста" value="{{old('title')}}">
+                                <input type="text" class="form-control" name="title" placeholder="Название поста"
+                                       value="{{old('title')}}">
                                 @error('title')
                                 <div class="text-danger">Это поле необходимо заполнить!</div>
                                 @enderror
@@ -73,6 +75,18 @@
                                         <option value="{{$category->id}}"
                                             {{$category->id == old('category_id')?' selected':''}}
                                         >{{$category->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Multiple</label>
+                                <select class="select2" name="tag_ids[]" multiple="multiple"
+                                        data-placeholder="Выберите теги"
+                                        style="width: 100%;">
+                                    @foreach($tags as $tag)
+                                        <option value="{{$tag->id}}"
+                                            {{is_array(old('tag_ids'))&&in_array($tag->id,old('tag_ids'))?' selected':''}}
+                                        >{{$tag->title}}</option>
                                     @endforeach
                                 </select>
                             </div>

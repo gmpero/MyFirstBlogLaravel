@@ -22,7 +22,23 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string'
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string',
+        ];
+    }
+
+    public function message()
+    {
+        return[
+            'name.required' => 'Это поле необходимо заполнить',
+            'name.string' => 'Поле должно быть строкой',
+            'email.required' => 'Это поле необходимо заполнить',
+            'email.string' => 'Email должен быть строкой',
+            'email.email' => 'Ваша почта должна соответствовать формату mail@some.domain',
+            'email.unique' => 'Пользователь с таким email уже существует',
+            'password.required' => 'Это поле необходимо заполнить',
+            'password.string' => 'Поле должно быть строкой',
         ];
     }
 }

@@ -36,7 +36,7 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Название</th>
+                                        <th>Имя</th>
                                         <th class="text-center" colspan="3">Действия</th>
                                     </tr>
                                     </thead>
@@ -44,7 +44,7 @@
                                     @foreach($users as $user)
                                         <tr>
                                             <td>{{$user->id}}</td>
-                                            <td>{{$user->title}}</td>
+                                            <td>{{$user->name}}</td>
                                             <td class="text-center col-1">
                                                 <a href="{{route('admin.user.show', $user->id)}}">
                                                     <i class="far fa-eye"></i>

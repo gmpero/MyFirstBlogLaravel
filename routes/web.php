@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\Main\IndexController as IndexControllerAlias;
 
 
 Route::group(['App\Http\Controllers\Main'], function () {
-    Route::get('/', IndexController::class);
+    Route::get('/', IndexController::class)->name('main.index');
 });
 
 

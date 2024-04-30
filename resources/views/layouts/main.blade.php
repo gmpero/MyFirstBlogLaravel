@@ -21,11 +21,23 @@
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="edicaMainNav">
-                <ul class="navbar-nav mt-2 mt-lg-0">
+            <div class="collapse navbar-collapse row" id="edicaMainNav">
+                <ul class="navbar-nav mt-2 mt-lg-0 mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('main.index')}}">Блог</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav mt-2 mt-lg-0">
+                    @auth()
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('personal.main.index')}}">Личный кабинет</a>
+                        </li>
+                    @endauth
+                    @guest()
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('personal.main.index')}}">Войти</a>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </nav>

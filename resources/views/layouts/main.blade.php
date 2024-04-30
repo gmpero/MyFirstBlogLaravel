@@ -32,6 +32,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('personal.main.index')}}">Личный кабинет</a>
                         </li>
+                        <li class="nav-item">
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                <input class="btn btn-outline-danger" type="submit" value="Выйти">
+                            </form>
+                        </li>
                     @endauth
                     @guest()
                         <li class="nav-item">

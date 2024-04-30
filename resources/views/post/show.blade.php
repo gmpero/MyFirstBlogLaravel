@@ -16,8 +16,32 @@
                     </div>
                 </div>
             </section>
+            <section class="py-3">
+                <div>
+                    @auth()
+                        <form action="{{route('post.like.store', $post->id)}}" method="post">
+                            @csrf
+                            <span>{{$post->liked_users_count}}</span>
+                            <button type="submit" class="border-0 bg-transparent">
+                                @if(auth()->user()->likedPosts->contains($post->id))
+                                    <i class="fas fa-heart text-danger"></i>
+                                @else
+                                    <i class="far fa-heart"></i>
+                                @endif
+                            </button>
+                        </form>
+                    @endauth
+                    @guest()
+                        <div>
+                            <span>{{$post->liked_users_count}}</span>
+                            <i class="far fa-heart"></i>
+                        </div>
+                    @endguest
+                </div>
+            </section>
             <div class="row">
                 <div class="col-lg-9 mx-auto">
+                    @if($relatedPosts->count()>0)
                     <section class="related-posts">
                         <h2 class="section-title mb-4" data-aos="fade-up">Похожие посты</h2>
                         <div class="row">
@@ -32,8 +56,9 @@
                             @endforeach
                         </div>
                     </section>
+                    @endif
                     <section class="comment-section mb-6">
-                        <h3 class="mb-4">Комментарии</h3>
+                        <h3 class="mb-4">Комментарии ({{$post->comments->count()}})</h3>
                         @foreach($post->comments as $comment)
                         <div class="card-footer card-comments mb-2">
                             <div class="card-comment">
